@@ -1,0 +1,29 @@
+Задание 1
+
+scooter_rent=# SELECT c.login, COUNT(ord."inDelivery") FROM "Orders" AS ord INNER JOIN "Couriers" AS c ON ord."courierId" = c.id WHERE "inDelivery" = true GROUP BY c.login;
+ login | count
+-------+-------
+ Nick  |     4
+(1 row)
+
+scooter_rent=# SELECT "inDelivery" FROM "Orders";
+ inDelivery
+------------
+ t
+ t
+ t
+ t
+(4 rows)
+
+
+Задание 2
+
+scooter_rent=# SELECT track, CASE WHEN "finished" = true THEN '2' WHEN "cancelled" = true THEN '-1' WHEN "inDelivery" = true THEN '1' ELSE '0' END AS status FROM "Orders";
+ track  | status
+--------+--------
+ 266379 | 1
+ 266379 | 1
+ 326240 | 1
+ 326240 | 1
+(4 rows)
+
